@@ -2,6 +2,7 @@ import React from "react";
 
 import Job from "./Job";
 import { useState, useEffect } from "react";
+import Spinners from "./Spinners";
 
 const JobsListing = ({ isHome = false }) => {
   const [loadAll, setLoadAll] = useState(false);
@@ -15,8 +16,8 @@ const JobsListing = ({ isHome = false }) => {
 
   useEffect(() => {
     const data = async () => {
-      setLoading(() => true);
       try {
+        setLoading(() => true);
         const response = await fetch("http://localhost:8000/jobs");
         const alldata = await response.json();
         setApiJobs(() => {
@@ -46,12 +47,19 @@ const JobsListing = ({ isHome = false }) => {
           <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center">
             Browse Jobs
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recentJobs.map((data, index) => {
-              const { id } = data;
-              return <Job key={id} positionDetails={data} />;
-            })}
-          </div>
+
+          <>
+            {loading ? (
+              <Spinners loading={loading} />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {recentJobs.map((data, index) => {
+                  const { id } = data;
+                  return <Job key={id} positionDetails={data} />;
+                })}
+              </div>
+            )}
+          </>
         </div>
       </section>
     </>
