@@ -2,15 +2,13 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Homecard from "./components/Homecard";
-import Jobs from "./jobs.json";
 import JobsListing from "./components/JobsListing";
-const headerTitle = {
-  title: " Become a React Dev",
-  subtitle: "Find the React job that fits your skills and needs",
-};
-const App = () => {
-  const AllJobs = Jobs.jobs;
 
+const App = () => {
+  const headerTitle = {
+    title: " Become a React Dev",
+    subtitle: "Find the React job that fits your skills and needs",
+  };
   return (
     <>
       <div>

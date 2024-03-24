@@ -1,7 +1,7 @@
 import React from "react";
 
 const Job = ({ positionDetails }) => {
-  const { type, title, description, salary, location } = positionDetails;
+  const { id, type, title, description, salary, location } = positionDetails;
   return (
     <div className="bg-white rounded-xl shadow-md relative">
       <div className="p-4">
@@ -22,7 +22,7 @@ const Job = ({ positionDetails }) => {
             {location}
           </div>
           <a
-            href="job.html"
+            href={`/job/${id}`}
             className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
           >
             Read More
