@@ -1,15 +1,37 @@
 import React from "react";
-import Jobs from "../jobs.json";
+
 import Job from "./Job";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const JobsListing = ({ isHome = false }) => {
   const [loadAll, setLoadAll] = useState(false);
+  const [apiJobs, setApiJobs] = useState([]);
+  const [loading, setLoading] = useState(false);
   const recentJobs = isHome
     ? loadAll
-      ? Jobs.jobs
-      : Jobs.jobs.slice(0, 3)
-    : Jobs.jobs;
+      ? apiJobs
+      : apiJobs.slice(0, 3)
+    : apiJobs;
+
+  useEffect(() => {
+    const data = async () => {
+      setLoading(() => true);
+      try {
+        const response = await fetch("http://localhost:8000/jobs");
+        const alldata = await response.json();
+        setApiJobs(() => {
+          return alldata;
+        });
+      } catch (error) {
+        console.error("Error found while loading data", error);
+      } finally {
+        console.log("done loading");
+        setLoading(() => false);
+      }
+    };
+    data();
+  }, []);
+
   const checkLoadAll = (e) => {
     e.preventDefault();
     setLoadAll(() => {
