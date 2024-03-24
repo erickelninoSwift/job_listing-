@@ -1,7 +1,15 @@
 import React from "react";
+import { useState } from "react";
 
 const Job = ({ positionDetails }) => {
   const { id, type, title, description, salary, location } = positionDetails;
+  const [showDescription, setshowDescription] = useState(false);
+  const handleReadMore = () => {
+    setshowDescription(() => {
+      return !showDescription;
+    });
+  };
+  console.log(showDescription);
   return (
     <div className="bg-white rounded-xl shadow-md relative">
       <div className="p-4">
@@ -10,8 +18,15 @@ const Job = ({ positionDetails }) => {
           <h3 className="text-xl font-bold">{title}</h3>
         </div>
 
-        <div className="mb-5">{description}</div>
-
+        <div className="mb-5">
+          {showDescription ? description.substring(0, 90) + "..." : description}
+        </div>
+        <button
+          className="text-indigo-400 mb-5 hover:text-indigo-600"
+          onClick={handleReadMore}
+        >
+          {!showDescription ? "less" : "more"}
+        </button>
         <h3 className="text-indigo-500 mb-2">{salary}/ Year</h3>
 
         <div className="border border-gray-100 mb-5"></div>
