@@ -8,6 +8,12 @@ const JobsListing = ({ isHome = false }) => {
   const [loadAll, setLoadAll] = useState(false);
   const [apiJobs, setApiJobs] = useState([]);
   const [loading, setLoading] = useState(false);
+  // const recentJobs = isHome
+  //   ? loadAll
+  //     ? apiJobs
+  //     : apiJobs.slice(0, 3)
+  //   : apiJobs;
+
   const recentJobs = isHome
     ? loadAll
       ? apiJobs
@@ -18,7 +24,7 @@ const JobsListing = ({ isHome = false }) => {
     const data = async () => {
       try {
         setLoading(() => true);
-        const response = await fetch("http://localhost:8000/jobs");
+        const response = await fetch("/api/jobs");
         const alldata = await response.json();
         setApiJobs(() => {
           return alldata;
