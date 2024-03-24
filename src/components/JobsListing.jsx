@@ -1,9 +1,17 @@
 import React from "react";
 import Jobs from "../jobs.json";
 import Job from "./Job";
-
+import { useState } from "react";
 const JobsListing = () => {
-  const recentJobs = Jobs.jobs.slice(0, 3);
+  const [loadAll, setLoadAll] = useState(false);
+  const recentJobs = loadAll ? Jobs.jobs : Jobs.jobs.slice(0, 3);
+  const checkLoadAll = (e) => {
+    e.preventDefault();
+    setLoadAll(() => {
+      return !loadAll;
+    });
+  };
+
   return (
     <>
       <section className="bg-blue-50 px-4 py-10">
@@ -21,8 +29,9 @@ const JobsListing = () => {
       </section>
       <section className="m-auto max-w-lg my-10 px-6">
         <a
-          href="jobs.html"
+          href={""}
           className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
+          onClick={(e) => checkLoadAll(e)}
         >
           View All Jobs
         </a>
