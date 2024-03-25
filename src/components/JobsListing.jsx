@@ -8,11 +8,6 @@ const JobsListing = ({ isHome = false }) => {
   const [loadAll, setLoadAll] = useState(false);
   const [apiJobs, setApiJobs] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const recentJobs = isHome
-  //   ? loadAll
-  //     ? apiJobs
-  //     : apiJobs.slice(0, 3)
-  //   : apiJobs;
 
   const recentJobs = isHome
     ? loadAll
@@ -39,12 +34,12 @@ const JobsListing = ({ isHome = false }) => {
     data();
   }, []);
 
-  const checkLoadAll = (e) => {
-    e.preventDefault();
-    setLoadAll(() => {
-      return !loadAll;
-    });
-  };
+  // const checkLoadAll = (e) => {
+  //   e.preventDefault();
+  //   setLoadAll(() => {
+  //     return !loadAll;
+  //   });
+  // };
 
   return (
     <>
