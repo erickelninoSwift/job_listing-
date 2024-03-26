@@ -5,12 +5,14 @@ import Spinners from "../components/Spinners";
 import { NavLink } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaMapMarker } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const Jobpage = ({ deleteJob }) => {
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [Loading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchJob = async () => {
       try {
@@ -27,6 +29,14 @@ const Jobpage = ({ deleteJob }) => {
     fetchJob();
   }, []);
 
+  const deleteJobSelected = () => {
+    const confirm = window.confirm("Are you sure to delete job id : ", job.id);
+    if (!confirm) return;
+
+    deleteJob(job.id);
+    toast.success("Job was deleted Successfully");
+    navigate("/jobs");
+  };
   return (
     <>
       {Loading ? (
@@ -106,7 +116,7 @@ const Jobpage = ({ deleteJob }) => {
                     </NavLink>
                     <button
                       className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                      onClick={() => deleteJob(id)}
+                      onClick={() => deleteJobSelected()}
                     >
                       Delete Job
                     </button>
