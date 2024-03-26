@@ -23,8 +23,8 @@ const AddJobPage = ({ addJobonSubmit }) => {
       description,
       salary,
       company: {
-        companyName,
-        companyDescritpion,
+        name: companyName,
+        description: companyDescritpion,
         contactEmail,
         contactPhone,
       },
@@ -156,7 +156,7 @@ const AddJobPage = ({ addJobonSubmit }) => {
                 name="company"
                 className="border rounded w-full py-2 px-3"
                 placeholder="Company Name"
-                value={companyName}
+                value={name}
                 onChange={(e) => setCompanyName(e.target.value)}
               />
             </div>

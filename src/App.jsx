@@ -16,6 +16,7 @@ import {
 
 const App = () => {
   const [JobAdded, setJobAdded] = useState("");
+  const [editJob, setEditJob] = useState("");
 
   const addJob = async (newJob) => {
     setJobAdded(() => {
@@ -36,8 +37,12 @@ const App = () => {
     });
   };
 
-  const editJob = (id) => {
-    console.log("Edit job iD :", id);
+  const myEditJob = async (job) => {
+    setEditJob(job);
+  };
+
+  const selectedJobtoEdit = (jobSelcted) => {
+    console.log(jobSelcted);
   };
 
   const router = createBrowserRouter(
@@ -49,10 +54,18 @@ const App = () => {
           path="/add-job"
           element={<AddJobPage addJobonSubmit={addJob} />}
         />
-        <Route path="/jobs/:id" element={<Jobpage deleteJob={deleteJob} />} />
+        <Route
+          path="/jobs/:id"
+          element={<Jobpage deleteJob={deleteJob} editJob={myEditJob} />}
+        />
         <Route
           path="/jobs/edit-job/:id"
-          element={<EditJobpage editJob={editJob} />}
+          element={
+            <EditJobpage
+              jobToEdit={editJob}
+              editJobJobonSubmit={selectedJobtoEdit}
+            />
+          }
         />
         <Route path="/*" element={<NotfoundPage />} />
       </Route>
