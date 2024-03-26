@@ -41,8 +41,24 @@ const App = () => {
     setEditJob(job);
   };
 
-  const selectedJobtoEdit = (jobSelcted) => {
-    console.log(jobSelcted);
+  const selectedJobtoEdit = async (jobSelcted) => {
+    const { id } = jobSelcted;
+    try {
+      const response = await fetch(`/api/jobs/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jobSelcted),
+      });
+    } catch (error) {
+      console.log(
+        `There was an error while updating data id : ,
+        ${jobSelcted.id}  ,
+        ${error}`
+      );
+    }
+    return;
   };
 
   const router = createBrowserRouter(
