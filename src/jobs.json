@@ -71,22 +71,6 @@
       }
     },
     {
-      "id": "166e",
-      "newJob": {
-        "title": "Javascript developer (Fullstack)",
-        "type": "Remote",
-        "location": "pretoria",
-        "description": "We want someone who really enjoys his work",
-        "salary": "$90K - 100K",
-        "company": {
-          "companyName": "Datafin",
-          "companyDescritpion": "South african based company",
-          "contactEmail": "erick@yahoo.com",
-          "contactPhone": "0812119429"
-        }
-      }
-    },
-    {
       "id": "6349",
       "title": "Cloud Eng",
       "type": "Remote",

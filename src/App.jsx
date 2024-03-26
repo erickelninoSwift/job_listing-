@@ -5,6 +5,7 @@ import Jobspage from "./pages/Jobspage";
 import { NotfoundPage } from "./pages/NotfoundPage";
 import Jobpage from "./pages/Jobpage";
 import AddJobPage from "./pages/AddJobPage";
+import EditJobpage from "./pages/EditJobpage";
 import { useState } from "react";
 import {
   RouterProvider,
@@ -35,6 +36,10 @@ const App = () => {
     });
   };
 
+  const editJob = (id) => {
+    console.log("Edit job iD :", id);
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Mainlayouts />}>
@@ -45,6 +50,10 @@ const App = () => {
           element={<AddJobPage addJobonSubmit={addJob} />}
         />
         <Route path="/jobs/:id" element={<Jobpage deleteJob={deleteJob} />} />
+        <Route
+          path="/jobs/edit-job/:id"
+          element={<EditJobpage editJob={editJob} />}
+        />
         <Route path="/*" element={<NotfoundPage />} />
       </Route>
     )
