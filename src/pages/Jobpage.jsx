@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaMapMarker } from "react-icons/fa";
 
-const Jobpage = () => {
+const Jobpage = ({ deleteJob }) => {
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [Loading, setLoading] = useState(true);
@@ -26,6 +26,7 @@ const Jobpage = () => {
 
     fetchJob();
   }, []);
+
   return (
     <>
       {Loading ? (
@@ -103,7 +104,10 @@ const Jobpage = () => {
                     >
                       Edit Job
                     </NavLink>
-                    <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block">
+                    <button
+                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                      onClick={() => deleteJob(id)}
+                    >
                       Delete Job
                     </button>
                   </div>

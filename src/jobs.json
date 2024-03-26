@@ -83,6 +83,36 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
+    },
+    {
+      "id": "166e",
+      "newJob": {
+        "title": "Javascript developer (Fullstack)",
+        "type": "Remote",
+        "location": "pretoria",
+        "description": "We want someone who really enjoys his work",
+        "salary": "$90K - 100K",
+        "company": {
+          "companyName": "Datafin",
+          "companyDescritpion": "South african based company",
+          "contactEmail": "erick@yahoo.com",
+          "contactPhone": "0812119429"
+        }
+      }
+    },
+    {
+      "id": "01fd",
+      "title": "Graduate Program",
+      "type": "Internship",
+      "location": "Kinshasa",
+      "description": "12 Months contract (Renewable based on performance)",
+      "salary": "$150K - 175K",
+      "company": {
+        "companyName": "Congo Zando",
+        "companyDescritpion": "Congolese IT solutions company ",
+        "contactEmail": "jackpot@yahoo.com",
+        "contactPhone": "0734435665"
+      }
     }
   ]
 }
